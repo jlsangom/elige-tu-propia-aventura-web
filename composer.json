@@ -1,0 +1,21 @@
+{
+    "name": "carlosbuenosvinos/elige-tu-propia-aventura-web",
+    "require": {
+        "phpunit/phpunit": "3.7.*",
+        "doctrine/orm": "2.4.*"
+    },
+    "authors": [
+        {
+            "name": "Carlos Buenosvinos",
+            "email": "hi@carlos.io"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Etpa": "src/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
