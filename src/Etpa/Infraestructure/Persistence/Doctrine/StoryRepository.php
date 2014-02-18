@@ -2,7 +2,9 @@
 
 namespace Etpa\Infraestructure\Persistence\Doctrine;
 
-class StoryRepository implements \Etpa\Domain\StoryRepository
+use Doctrine\ORM\EntityRepository;
+
+class StoryRepository extends EntityRepository implements \Etpa\Domain\StoryRepository
 {
     /**
      * @param \Etpa\Domain\Story $story
@@ -10,6 +12,7 @@ class StoryRepository implements \Etpa\Domain\StoryRepository
      */
     public function persist($story)
     {
-
+        $this->_em->persist($story);
+        $this->_em->flush();
     }
 }

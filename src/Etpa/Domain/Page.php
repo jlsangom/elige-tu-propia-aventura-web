@@ -2,7 +2,7 @@
 
 namespace Etpa\Domain;
 
-class Step
+class Page
 {
     /**
      * @var int
