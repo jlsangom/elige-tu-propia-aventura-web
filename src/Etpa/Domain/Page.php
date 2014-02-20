@@ -20,6 +20,11 @@ class Page
     private $description;
 
     /**
+     * @var Page[]
+     */
+    private $pages = [];
+
+    /**
      * @return int
      */
     public function getId()
@@ -29,10 +34,13 @@ class Page
 
     /**
      * @param int $id
+     * @return $this
      */
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -45,7 +53,7 @@ class Page
 
     /**
      * @param string $title
-     * @return $this
+     *                      @return $this
      */
     public function setTitle($title)
     {
@@ -64,12 +72,29 @@ class Page
 
     /**
      * @param string $description
-     * @return $this
+     *                            @return $this
      */
     public function setDescription($description)
     {
         $this->description = $description;
 
         return $this;
+    }
+
+    /**
+     * @param Page   $page
+     */
+    public function addPage($page)
+    {
+        $this->pages[$page->getId()] = $page;
+    }
+
+    public function goToPage($id)
+    {
+        if (!isset($this->pages[$id])) {
+            throw new NonExistingPageException();
+        }
+
+        return $this->pages[$id];
     }
 }

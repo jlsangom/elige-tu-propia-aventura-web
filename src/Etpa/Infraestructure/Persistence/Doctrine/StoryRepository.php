@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityRepository;
 class StoryRepository extends EntityRepository implements \Etpa\Domain\StoryRepository
 {
     /**
-     * @param \Etpa\Domain\Story $story
+     * @param  \Etpa\Domain\Story $story
      * @return \Etpa\Domain\Story
      */
     public function persist($story)

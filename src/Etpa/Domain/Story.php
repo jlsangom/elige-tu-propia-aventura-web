@@ -50,7 +50,7 @@ class Story
 
     /**
      * @param string $title
-     * @return $this
+     *                      @return $this
      */
     public function setTitle($title)
     {
@@ -70,7 +70,7 @@ class Story
 
     /**
      * @param string $description
-     * @return $this
+     *                            @return $this
      */
     public function setDescription($description)
     {

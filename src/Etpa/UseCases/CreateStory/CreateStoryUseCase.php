@@ -15,7 +15,7 @@ class CreateStoryUseCase
     }
 
     /**
-     * @param CreateStoryRequest $request
+     * @param  CreateStoryRequest                             $request
      * @return \Etpa\UseCases\CreateStory\CreateStoryResponse
      * @throws CreateStoryException
      */

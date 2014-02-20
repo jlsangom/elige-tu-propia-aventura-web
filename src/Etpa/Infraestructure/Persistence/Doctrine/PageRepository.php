@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityRepository;
 class PageRepository extends EntityRepository implements \Etpa\Domain\PageRepository
 {
     /**
-     * @param \Etpa\Domain\Page $page
+     * @param  \Etpa\Domain\Page $page
      * @return \Etpa\Domain\Page
      */
     public function persist($page)

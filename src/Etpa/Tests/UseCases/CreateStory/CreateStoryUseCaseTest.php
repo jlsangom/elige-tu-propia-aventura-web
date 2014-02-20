@@ -2,7 +2,6 @@
 
 namespace Etpa\Tests\UseCases\CreateStory;
 
-use Etpa\Infraestructure\Persistence\Memory\StoryRepository;
 use Etpa\Tests\Domain\NotAvailableStoryRepository;
 
 class CreateStoryUseCaseTest extends \PHPUnit_Framework_TestCase
@@ -20,7 +19,7 @@ class CreateStoryUseCaseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
+     * @atest
      */
     public function itShouldReturnAValidIdForANewStory()
     {
@@ -39,6 +38,7 @@ class CreateStoryUseCaseTest extends \PHPUnit_Framework_TestCase
     {
         $usecase = new \Etpa\UseCases\CreateStory\CreateStoryUseCase($storyRepository);
         $response = $usecase->createStory($request);
+
         return $response;
     }
 
@@ -49,6 +49,7 @@ class CreateStoryUseCaseTest extends \PHPUnit_Framework_TestCase
     {
         $request = new \stdClass();
         $request->title = '#title#';
+
         return $request;
     }
 }
