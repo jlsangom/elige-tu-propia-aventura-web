@@ -1,0 +1,10 @@
+@startuml
+(View page story) as (Page)
+(View available stories) as (Stories)
+(View story) as (Story)
+
+User --> (Stories)
+User --> (Story)
+User ---> (Page)
+
+@enduml
