@@ -1,6 +1,6 @@
 <?php
 
-namespace Etpa\Tests\Domain;
+namespace Etpa\Tests\Infraestructure\Persistence;
 
 use Etpa\UseCases\Page\PageRepositoryNotAvailableException;
 
