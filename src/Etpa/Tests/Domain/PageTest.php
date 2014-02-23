@@ -10,7 +10,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
      * @test
      * @expectedException \Etpa\Domain\NonExistingPageException
      */
-    public function goFromNoTransitionsPageToOtherPageShouldThrowAnException()
+    public function goFromPageWithNoTransitionsToOtherPageShouldThrowAnException()
     {
         (new Page())
             ->setId(1)
@@ -23,7 +23,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
      * @test
      * @expectedException \Etpa\Domain\NonExistingPageException
      */
-    public function goFromPageWithTransitionsToOtherPageViaNonValidTransitionShouldThrowAnException()
+    public function goFromPageWithOneTransitionToOtherPageViaNonValidTransitionShouldThrowAnException()
     {
         $page = $this->createPage(1, 'Page #1 title', 'Page #1 description');
         $page->addPage($this->createPage(2, 'Page #2 title', 'Page #2 description'));
@@ -33,12 +33,25 @@ class PageTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function goFromPageWithTransitionsToOtherPageViaValidTransition()
+    public function goFromPageWithOneTransitionToOtherPageViaValidTransitionShouldReturnDestinationPage()
     {
         $page = $this->createPage(1, 'Page #1 title', 'Page #1 description');
         $childPage = $this->createPage(2, 'Page #2 title', 'Page #2 description');
         $page->addPage($childPage);
         $this->assertSame($childPage, $page->goToPage(2));
+    }
+
+    /**
+     * @test
+     */
+    public function goFromOnePageWithMoreThanOneTransitionToOtherPageViaValidTransitionShouldReturnDestinationPage()
+    {
+        $page = $this->createPage(1, 'Page #1 title', 'Page #1 description');
+        $firstOptionPage = $this->createPage(2, 'Page #2 title', 'Page #2 description');
+        $secondOptionPage = $this->createPage(3, 'Page #3 title', 'Page #3 description');
+        $page->addPage($firstOptionPage);
+        $page->addPage($secondOptionPage);
+        $this->assertSame($firstOptionPage, $page->goToPage(2));
     }
 
     /**

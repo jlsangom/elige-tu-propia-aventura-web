@@ -36,10 +36,8 @@ class CreateStoryUseCaseTest extends \PHPUnit_Framework_TestCase
      */
     private function executeRequest($storyRepository, $request)
     {
-        $usecase = new \Etpa\UseCases\CreateStory\CreateStoryUseCase($storyRepository);
-        $response = $usecase->createStory($request);
-
-        return $response;
+        return (new \Etpa\UseCases\CreateStory\CreateStoryUseCase($storyRepository))
+            ->createStory($request);
     }
 
     /**

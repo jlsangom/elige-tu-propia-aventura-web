@@ -79,4 +79,9 @@ class Story
 
         return $this;
     }
+
+    public function getFirstPage()
+    {
+
+    }
 }

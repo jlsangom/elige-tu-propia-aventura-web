@@ -82,11 +82,22 @@ class Page
     }
 
     /**
-     * @param Page   $page
+     * @param Page $page
+     * @return $this
      */
     public function addPage($page)
     {
         $this->pages[$page->getId()] = $page;
+
+        return $this;
+    }
+
+    /**
+     * @return Page[]
+     */
+    public function getPageDestinations()
+    {
+        return $this->pages;
     }
 
     public function goToPage($id)
