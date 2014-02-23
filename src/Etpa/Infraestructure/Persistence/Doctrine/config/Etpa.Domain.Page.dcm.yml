@@ -1,4 +1,4 @@
-Etpa\Domain\Story:
+Etpa\Domain\Page:
   type: entity
   table: page
   repositoryClass: Etpa\Infraestructure\Persistence\Doctrine\PageRepository

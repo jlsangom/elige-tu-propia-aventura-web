@@ -20,7 +20,7 @@ class ViewStoriesUseCase
      */
     public function viewStories($request)
     {
-        $response = new ViewPageResponse();
+        $response = new ViewStoriesResponse();
         $response->stories = $this->storyRepository->findAll();
 
         return $response;
