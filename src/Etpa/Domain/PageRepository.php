@@ -10,4 +10,10 @@ interface PageRepository
      * @return \Etpa\Domain\Story
      */
     public function persist($page);
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function find($id);
 }

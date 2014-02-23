@@ -15,4 +15,13 @@ class NotAvailableStoryRepository implements \Etpa\Domain\StoryRepository
     {
         throw new CreateStoryException();
     }
+
+    /**
+     * @return \Etpa\Domain\Story[]
+     * @throws \Etpa\UseCases\Story\CouldNotFetchStoriesException
+     */
+    public function findAll()
+    {
+        throw new CreateStoryException();
+    }
 }
