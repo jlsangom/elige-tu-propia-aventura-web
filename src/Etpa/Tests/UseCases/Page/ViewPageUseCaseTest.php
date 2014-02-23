@@ -15,11 +15,7 @@ class ViewPageUseCaseTest extends \PHPUnit_Framework_TestCase
      */
     public function whenPageIdDoesNotExistInRepoShouldThrowAPageDoesNotExistException()
     {
-        $pageRepository = new EmptyPageRepository();
-        $usecase = new ViewPageUseCase($pageRepository);
-        $request = new ViewPageRequest();
-        $request->pageId = 1;
-        $usecase->viewPage($request);
+        $this->executeUseCase(new EmptyPageRepository());
     }
 
     /**
@@ -28,7 +24,14 @@ class ViewPageUseCaseTest extends \PHPUnit_Framework_TestCase
      */
     public function whenRepositoryNotAvailableShouldThrowAPageRepositoryNotAvailableException()
     {
-        $pageRepository = new NotAvailablePageRepository();
+        $this->executeUseCase(new NotAvailablePageRepository());
+    }
+
+    /**
+     * @param $pageRepository
+     */
+    private function executeUseCase($pageRepository)
+    {
         $usecase = new ViewPageUseCase($pageRepository);
         $request = new ViewPageRequest();
         $request->pageId = 1;
