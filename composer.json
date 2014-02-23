@@ -1,8 +1,11 @@
 {
     "name": "carlosbuenosvinos/elige-tu-propia-aventura-web",
     "require": {
+        "silex/silex": "~1.1",
+        "doctrine/orm": "2.4.*"
+    },
+    "require-dev": {
         "phpunit/phpunit": "3.7.*",
-        "doctrine/orm": "2.4.*",
         "fabpot/php-cs-fixer": "0.*"
     },
     "authors": [
@@ -13,7 +16,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "Etpa": "src/"
+            "Etpa": "src"
         }
     },
     "config": {
