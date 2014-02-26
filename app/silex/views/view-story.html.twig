@@ -4,6 +4,6 @@
     <h1 class="cover-heading">{{ story.title }}</h1>
     <p class="lead">{{ story.description }}</p>
     <p class="lead">
-        <a href="/page/" class="btn btn-lg btn-default">Start</a>
+        <a href="/page/{{ story.firstPage.id }}" class="btn btn-lg btn-default">Start</a>
     </p>
 {% endblock %}

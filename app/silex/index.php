@@ -60,12 +60,6 @@ $app->get('/story/add', function () use ($app) {
 
 $app->get('/reset', function () use ($app) {
     $storyRepository = $app['em']->getRepository('Etpa\Domain\Story');
-    $story = new \Etpa\Domain\Story();
-    $story->setTitle('El laberinto');
-    $story->setDescription('Un laberinto sin fin del que tendrás que salir, si puedes.');
-    $storyRepository->persist($story);
-
-    $pageRepository = $app['em']->getRepository('Etpa\Domain\Page');
 
     $secondPage = new \Etpa\Domain\Page();
     $secondPage->setTitle('Fin');
@@ -76,8 +70,11 @@ $app->get('/reset', function () use ($app) {
     $firstPage->setDescription('Es una historia que tiene inicio y fin.');
     $firstPage->addPage($secondPage);
 
-    $pageRepository->persist($secondPage);
-    $pageRepository->persist($firstPage);
+    $story = new \Etpa\Domain\Story();
+    $story->setTitle('El laberinto');
+    $story->setDescription('Un laberinto sin fin del que tendrás que salir, si puedes.');
+    $story->setFirstPage($firstPage);
+    $storyRepository->persist($story);
 
     return $app->escape('Done!');
 });

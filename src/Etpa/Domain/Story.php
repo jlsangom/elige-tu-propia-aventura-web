@@ -25,6 +25,11 @@ class Story
     private $description;
 
     /**
+     * @var Page
+     */
+    private $firstPage;
+
+    /**
      * @return int
      */
     public function getId()
@@ -80,8 +85,22 @@ class Story
         return $this;
     }
 
+    /**
+     * @param \Etpa\Domain\Page $firstPage
+     * @return $this
+     */
+    public function setFirstPage($firstPage)
+    {
+        $this->firstPage = $firstPage;
+
+        return $this;
+    }
+
+    /**
+     * @return \Etpa\Domain\Page
+     */
     public function getFirstPage()
     {
-
+        return $this->firstPage;
     }
 }

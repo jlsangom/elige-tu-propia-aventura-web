@@ -13,3 +13,10 @@ Etpa\Domain\Story:
       length: 250
     description:
       type: text
+  oneToOne:
+    firstPage:
+      cascade: ["persist"]
+      targetEntity: Etpa\Domain\Page
+      joinColumn:
+        name: page_id
+        referencedColumnName: id

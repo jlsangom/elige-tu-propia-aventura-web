@@ -15,6 +15,7 @@ Etpa\Domain\Page:
       type: text
   manyToMany:
     pages:
+      cascade: ["persist"]
       targetEntity: Etpa\Domain\Page
       joinTable:
         name: page_transitions

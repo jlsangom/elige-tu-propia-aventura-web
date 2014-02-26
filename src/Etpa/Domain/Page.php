@@ -30,6 +30,11 @@ class Page
     private $source;
 
     /**
+     * @var Story
+     */
+    private $story;
+
+    /**
      * @return int
      */
     public function getId()
@@ -132,5 +137,24 @@ class Page
         }
 
         return $this->pages[$id];
+    }
+
+    /**
+     * @param \Etpa\Domain\Story $story
+     * @return $this
+     */
+    public function setStory($story)
+    {
+        $this->story = $story;
+
+        return $this;
+    }
+
+    /**
+     * @return \Etpa\Domain\Story
+     */
+    public function getStory()
+    {
+        return $this->story;
     }
 }
