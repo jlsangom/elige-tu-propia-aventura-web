@@ -29,8 +29,9 @@ $app->get('/stories', function () use ($app) {
     return $app['twig']->render('view-stories.html.twig', ['stories' => $response->stories]);
 });
 
-$app->get('/story/{id}', function () use ($app) {
+$app->get('/story/{id}', function ($id) use ($app) {
     $request = new \Etpa\UseCases\Story\ViewStoryRequest();
+    $request->storyId = $id;
 
     $storyRepository = $app['em']->getRepository('Etpa\Domain\Story');
     $usecase = new \Etpa\UseCases\Story\ViewStoryUseCase($storyRepository);

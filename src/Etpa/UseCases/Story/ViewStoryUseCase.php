@@ -21,7 +21,7 @@ class ViewStoryUseCase
     public function viewStory($request)
     {
         $response = new ViewStoryResponse();
-        $response->stories = $this->storyRepository->findAll();
+        $response->story = $this->storyRepository->find($request->storyId);
 
         return $response;
     }
