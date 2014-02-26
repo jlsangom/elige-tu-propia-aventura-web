@@ -15,9 +15,14 @@ $app['em'] = function() {
     return (new EntityManagerFactory())->build();
 };
 
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/views',
 ));
+
+$app->get('/', function () use ($app) {
+    return $app['twig']->render('layout.html.twig');
+})->bind('home');
 
 $app->get('/stories', function () use ($app) {
     $request = new \Etpa\UseCases\Story\ViewStoriesRequest();
@@ -27,7 +32,7 @@ $app->get('/stories', function () use ($app) {
     $response = $usecase->viewStories($request);
 
     return $app['twig']->render('view-stories.html.twig', ['stories' => $response->stories]);
-});
+})->bind('read');
 
 $app->get('/story/{id}', function ($id) use ($app) {
     $request = new \Etpa\UseCases\Story\ViewStoryRequest();
