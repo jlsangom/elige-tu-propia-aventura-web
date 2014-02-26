@@ -20,11 +20,11 @@ class ViewStoriesUseCaseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Etpa\UseCases\Story\StoryRepositoryNotAvailableException
      */
     public function whenRepositoryIsEmptyShouldReturnEmptyList()
     {
-        $this->executeUseCase(new EmptyStoryRepository());
+        $response = $this->executeUseCase(new EmptyStoryRepository());
+        $this->assertCount(0, $response->stories);
     }
 
     /**
