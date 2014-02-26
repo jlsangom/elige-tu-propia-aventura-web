@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1 class="cover-heading">Stories</h1>
+    <p class="lead">Choose your next adventure</p>
+    <p class="lead">
+        {% for story in stories %}
+            <a href="/story/{{ story.id }}" class="btn btn-lg btn-default">{{ story.title }}</a>
+        {% endfor %}
+    </p>
+{% endblock %}

@@ -16,12 +16,17 @@ class ViewStoriesUseCase
 
     /**
      * @param $request
+     * @throws StoryRepositoryNotAvailableException
      * @return \Etpa\UseCases\Story\ViewStoriesResponse
      */
     public function viewStories($request)
     {
         $response = new ViewStoriesResponse();
-        $response->stories = $this->storyRepository->findAll();
+        try {
+            $response->stories = $this->storyRepository->findAll();
+        } catch(\Exception $e) {
+            throw new StoryRepositoryNotAvailableException();
+        }
 
         return $response;
     }

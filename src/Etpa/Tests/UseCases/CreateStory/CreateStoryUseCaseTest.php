@@ -2,7 +2,7 @@
 
 namespace Etpa\Tests\UseCases\CreateStory;
 
-use Etpa\Tests\Domain\NotAvailableStoryRepository;
+use Etpa\Tests\Infraestructure\Persistence\NotAvailableStoryRepository;
 
 class CreateStoryUseCaseTest extends \PHPUnit_Framework_TestCase
 {

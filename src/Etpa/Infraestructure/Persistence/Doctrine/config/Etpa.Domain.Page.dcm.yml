@@ -13,3 +13,14 @@ Etpa\Domain\Page:
       length: 250
     description:
       type: text
+  manyToMany:
+    pages:
+      targetEntity: Etpa\Domain\Page
+      joinTable:
+        name: page_transitions
+        joinColumns:
+          source_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          target_id:
+            referencedColumnName: id

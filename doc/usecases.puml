@@ -1,10 +1,13 @@
 @startuml
-(View page story) as (Page)
-(View available stories) as (Stories)
+(View stories) as (Stories)
 (View story) as (Story)
+(View page) as (Page)
+(Choose option) as (Option)
 
 User --> (Stories)
+User --> (Option)
 User --> (Story)
-User ---> (Page)
+User --> (Page)
+(Option) --> (Page)
 
 @enduml

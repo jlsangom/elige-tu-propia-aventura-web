@@ -25,6 +25,11 @@ class Page
     private $pages = [];
 
     /**
+     * @var Page
+     */
+    private $source;
+
+    /**
      * @return int
      */
     public function getId()
@@ -82,12 +87,32 @@ class Page
     }
 
     /**
+     * @param \Etpa\Domain\Page $source
+     * @return $this
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    /**
+     * @return \Etpa\Domain\Page
+     */
+    public function getSource()
+    {
+        return $this->source;
+    }
+
+    /**
      * @param Page $page
      * @return $this
      */
     public function addPage($page)
     {
         $this->pages[$page->getId()] = $page;
+        $page->setSource($this);
 
         return $this;
     }
@@ -95,7 +120,7 @@ class Page
     /**
      * @return Page[]
      */
-    public function getPageDestinations()
+    public function getPages()
     {
         return $this->pages;
     }

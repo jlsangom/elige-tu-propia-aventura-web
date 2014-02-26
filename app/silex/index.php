@@ -26,7 +26,17 @@ $app->get('/stories', function () use ($app) {
     $usecase = new \Etpa\UseCases\Story\ViewStoriesUseCase($storyRepository);
     $response = $usecase->viewStories($request);
 
-    return $app->escape(print_r($response->stories, 1));
+    return $app['twig']->render('view-stories.html.twig', ['stories' => $response->stories]);
+});
+
+$app->get('/story/{id}', function () use ($app) {
+    $request = new \Etpa\UseCases\Story\ViewStoryRequest();
+
+    $storyRepository = $app['em']->getRepository('Etpa\Domain\Story');
+    $usecase = new \Etpa\UseCases\Story\ViewStoryUseCase($storyRepository);
+    $response = $usecase->viewStory($request);
+
+    return $app['twig']->render('view-story.html.twig', ['story' => $response->story]);
 });
 
 $app->get('/page/{id}', function ($id) use ($app) {
@@ -51,14 +61,22 @@ $app->get('/reset', function () use ($app) {
     $storyRepository = $app['em']->getRepository('Etpa\Domain\Story');
     $story = new \Etpa\Domain\Story();
     $story->setTitle('El laberinto');
-    $story->setDescription('Un laberinto sin fin del que tendrás que salir, si puedes.');
+    $story->setDescription('Un laberinto sin fin del que tendrÃ¡s que salir, si puedes.');
     $storyRepository->persist($story);
 
     $pageRepository = $app['em']->getRepository('Etpa\Domain\Page');
-    $page = new \Etpa\Domain\Page();
-    $page->setTitle('Inicio y fin');
-    $page->setDescription('Es una historia que tiene inicio y fin.');
-    $pageRepository->persist($page);
+
+    $secondPage = new \Etpa\Domain\Page();
+    $secondPage->setTitle('Fin');
+    $secondPage->setDescription('Es una historia que tiene inicio y fin.');
+
+    $firstPage = new \Etpa\Domain\Page();
+    $firstPage->setTitle('Inicio');
+    $firstPage->setDescription('Es una historia que tiene inicio y fin.');
+    $firstPage->addPage($secondPage);
+
+    $pageRepository->persist($secondPage);
+    $pageRepository->persist($firstPage);
 
     return $app->escape('Done!');
 });

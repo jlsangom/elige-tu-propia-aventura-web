@@ -4,6 +4,8 @@
     <h1 class="cover-heading">{{ response.page.title }}</h1>
     <p class="lead">{{ response.page.description }}</p>
     <p class="lead">
-        <a href="#" class="btn btn-lg btn-default">Learn more</a>
+        {% for page in response.page.pages %}
+            <a href="/page/{{ page.id }}" class="btn btn-lg btn-default">{{ page.title }}</a>
+        {% endfor %}
     </p>
 {% endblock %}
